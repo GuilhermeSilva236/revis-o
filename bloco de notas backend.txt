@@ -1,0 +1,128 @@
+01 INSTALAR O GIT 
+https://git-scm.com/
+
+02 INSTALAR O NODE.JS
+https://nodejs.org/en ( BAIXAR A VERSÃO LTS )
+
+03 INSTALAR ALGUM HTTF CLIENTE (INSOMNIA)
+https://insomnia.rest/download
+
+04 CONFIGURANDO GIT 
+git config --global user.name "GuilhermeSilva236"
+git config --global user.email ggui2561@gmai.com
+
+05 CRIAR UMA PASTA CHAMAD NODE NA AREA DE TRABALHO E ABRIR O VSCODE NESSA PASTA NODE 
+
+06 CRIAR UMA ARQUIVO CHAMADA INDEX.JS
+
+07 INSTALAR O EXPRESS
+npm i express
+
+08 PARA FAZER O RESTARTE ALTOMATICO DO SERVIDO 
+npm nodemon
+npm i -g nodemon(para instalar o nodemon)
+se o npm i -g nodemon não funcionar usar o (npm i nodemon)
+
+09 PARA STARTAR O SERVIDOR 
+node .\index.js  
+ou npm run dev
+
+PARA ABRIR O ARQUIVO DIGITE localhost:3000
+
+10 alterar a pakage.json para iniciar com (npm run dev)
+{
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.3",
+    "nodemon": "^3.1.0"
+  }
+}
+
+11 colocar um CTRL S  no terminal para aplicar as alterações 
+
+12 para criar as rotas e somente duplicar isso mudando o nome da rota (/hello) e mudar o texto
+(res.send('Chegou a resposta')
+
+
+app.get('/hello', function(req, res){
+        res.send('Chegou a resposta')
+})
+
+// criando rotas com express 
+aperte CRTL + SHIFT + P para abrir e usar o Easy Snippet seleciona a opção ADD SNIPPET FROM SELECTION 
+e agr de um nome e salvar o CNTRL + S e agr para usar e so escrever o nome que foi dado a pasta. 
+
+
+instalar o jason viewer no crome 
+https://chromewebstore.google.com/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh?hl=pt-BR&pli=1
+para usar e so colocar res.json
+
+Entrar no insonia criar um folder dentro de collections entra dps aperta no mais e seleciona o HTTP Requeste
+
+agora copie a url e coloque dentro de get e da um send
+
+app.use(express.json());
+app.use(express.urlencoded({extended: false}))
+
+acessar o mongoose para estudar 
+https://mongoosejs.com/docs/guide.html
+
+PARA UTILIZAR O EASY SNIPPET NOS CONTROLER SO BASTA ADD ESSE CODIGO AQUI E ESCREVER O NOME DO CONTROLER E DEPOIS COPIAR E COLAR O SNIPPET
+
+const $CLIPBOARD = require("../models/$CLIPBOARD")
+
+const ${CLIPBOARD}Controller = {
+    getAll: async (req, res) => {
+        res.json( await $CLIPBOARD.find() )
+    },
+    get: async (req, res) => {
+
+        try {
+            res.json( await $CLIPBOARD.findById(req.params.id) )
+        } catch (error) {
+            res.status(404).json({error: 'Registro não encontrado'})
+        }
+
+
+    },
+    create: async (req, res) => {
+        try {
+            res.json( await $CLIPBOARD.create(req.body) )
+        } catch (error) {
+            res.status(400).json({error})
+        }
+    },
+    update: async (req, res) => {
+        try {
+            res.json( await $CLIPBOARD.findByIdAndUpdate(req.params.id, req.body) )
+        } catch (error) {
+            res.status(404).json({error: 'Registro não encontrado'})
+        }
+    },
+    delete: async (req, res) => {
+        try {
+            res.json( await $CLIPBOARD.findByIdAndDelete(req.params.id) )
+        } catch (error) {
+            res.status(404).json({error: 'Registro não encontrado'})
+        }
+    },
+
+
+}
+
+module.exports = ${CLIPBOARD}Controller
+
+PARA USAR EASY SNIPPET NAS MODELS E SO COPIAR ESSE CODIGO E USAR DA MESMA MANEIRA QUE USOU NSO CONTROLERS 
+
+const mongoose = require('mongoose')
+
+const schema = mongoose.Schema({
+    nome: String
+})
+
+const $CLIPBOARD = mongoose.model('$CLIPBOARD', schema)
+
+module.exports = $CLIPBOARD
+
